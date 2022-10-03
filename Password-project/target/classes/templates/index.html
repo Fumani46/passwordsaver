@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container my-2">
+        <div class="card">
+            <div class="card-body">
+                <p class="my-5">
+                    <a href="/Register" class="btn btn-primary">
+                        <i class="fas fa-vier-plus ml-2">Add User</i>
+                    </a>
+                </p>
+                <div class="col-md-10">
+<!--                    <h2 th:case="null">No Users Yet!</h2>-->
+                    <div >
+                        <table class="table table-striped table-responsive-md">
+                            <thead>
+                                <tr>
+                                    <th>UserId</th>
+                                    <th>Application Name</th>
+                                    <th>Username</th>
+                                    <th>Password</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="user : ${user}">
+                                    <td th:text="${user.UserId}"></td>
+                                    <td th:text="${user.ApplicationName}"></td>
+                                    <td th:text="${user.Username}"></td>
+                                    <td th:text="${user.Password}"></td>
+                                    <td><a th:href="@{/user/update/{id}{id=${user.UserId}}}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                    <td><a th:href="@{/user/delete/{id}{id=${user.UserId}}}" class="btn btn-primary"><i class="fas times ml-2"></i></a></td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

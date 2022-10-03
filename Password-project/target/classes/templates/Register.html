@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container my-S">
+        <h3>Add User</h3>
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-10">
+                    <form th:action="@{/user/add}" th:object="${user}" method="post">
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label for="Username" class="col-form-label">Username</label> <input type="text" th:field="*{Username}" class="form-control" id="Username" placeholder="Username"> <span th:if="${#fields.hasErrors('Username')}" th:errors="*{Username}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="Password" class="col-form-label">Password</label> <input type="text" th:field="*{Password}" class="form-control" id="Password" placeholder="Password"> <span th:if="${#fields.hasErrors('Password')}" th:errors="*{Password}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <label for="ApplicationName" class="col-form-label">ApplicationName</label> <input type="text" th:field="*{ApplicationName}" class="form-control" id="ApplicationName" placeholder="ApplicationName"> <span th:if="${#fields.hasErrors('ApplicationName')}" th:errors="*{ApplicationName}" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <input type="submit" class="btn btn-secondary" value="Add User">
+                            </div>
+                            <div class="form-group col-md-8"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
